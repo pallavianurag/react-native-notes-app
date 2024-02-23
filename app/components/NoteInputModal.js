@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
   Modal,
-  Text,
   StatusBar,
   TextInput,
   TouchableWithoutFeedback,
@@ -11,6 +10,7 @@ import {
 } from 'react-native';
 import colors from '../misc/colors';
 import RoundIconBtn from './RoundIconBtn';
+//import {actions, RichEditor, RichToolbar} from "react-native-pell-rich-editor";
 
 const NoteInputModal = ({ visible, onClose, onSubmit, note, isEdit }) => {
   const [title, setTitle] = useState('');
@@ -52,38 +52,45 @@ const NoteInputModal = ({ visible, onClose, onSubmit, note, isEdit }) => {
     onClose();
   };
 
+  //const richText = React.useRef();
+
   return (
     <>
       <StatusBar hidden />
-      <Modal visible={visible} animationType='fade'>
+      <Modal visible={visible} animationType='slide'>
         <View style={styles.container}>
           <TextInput
             value={title}
             onChangeText={text => handleOnChangeText(text, 'title')}
-            placeholder='TITLE'
+            placeholder='Title'
             style={[styles.input, styles.title]}
           />
           <TextInput
             value={desc}
             multiline
-            placeholder='Note'
+            placeholder='Description'
             style={[styles.input, styles.desc]}
             onChangeText={text => handleOnChangeText(text, 'desc')}
           />
+          {/* <RichToolbar
+        editor={richText}
+        actions={[ actions.setBold, actions.setItalic, actions.setUnderline, actions.heading1 ]}
+        
+      /> */}
           <View style={styles.btnContainer}>
             <RoundIconBtn
               size={15}
               antIconName='check'
               onPress={handleSubmit}
             />
-            {title.trim() || desc.trim() ? (
+            
               <RoundIconBtn
                 size={15}
                 style={{ marginLeft: 15 }}
                 antIconName='close'
                 onPress={closeModal}
               />
-            ) : null}
+            
           </View>
         </View>
         <TouchableWithoutFeedback onPress={handleModalClose}>
@@ -102,7 +109,7 @@ const styles = StyleSheet.create({
   input: {
     borderBottomWidth: 2,
     borderBottomColor: colors.PRIMARY,
-    fontSize: 20,
+    fontSize: 15,
     color: colors.GREY,
   },
   title: {

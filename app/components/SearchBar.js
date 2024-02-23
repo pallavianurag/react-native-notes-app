@@ -3,9 +3,9 @@ import { View, StyleSheet, TextInput } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import colors from '../misc/colors';
 
-const SearchBar = ({ containerStyle, value, onClear, onChangeText }) => {
+const SearchBar = ({ value, onClear, onChangeText }) => {
   return (
-    <View style={[styles.container, { ...containerStyle }]}>
+    <View style={styles.container}>
       <TextInput
         value={value}
         onChangeText={onChangeText}
@@ -20,7 +20,13 @@ const SearchBar = ({ containerStyle, value, onClear, onChangeText }) => {
           onPress={onClear}
           style={styles.clearIcon}
         />
-      ) : null}
+      ) : <AntDesign
+      name='search1'
+      size={20}
+      color={colors.PRIMARY}
+      onPress={onClear}
+      style={styles.clearIcon}
+    />}
     </View>
   );
 };
@@ -32,11 +38,12 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 40,
     paddingLeft: 15,
-    fontSize: 20,
+    fontSize: 15,
     color: colors.GREY,
   },
   container: {
     justifyContent: 'center',
+    marginVertical: 15
   },
   clearIcon: {
     position: 'absolute',

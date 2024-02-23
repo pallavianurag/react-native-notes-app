@@ -27,7 +27,7 @@ const reverseData = data => {
   });
 };
 
-const NoteScreen = ({ user, navigation }) => {
+const NoteScreen = ({ navigation }) => {
   
   const [modalVisible, setModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -84,7 +84,7 @@ const NoteScreen = ({ user, navigation }) => {
             <SearchBar
               value={searchQuery}
               onChangeText={handleOnSearchInput}
-              containerStyle={{ marginVertical: 15 }}
+              
               onClear={handleOnClear}
             />
           ) : null}
